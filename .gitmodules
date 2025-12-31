@@ -1,0 +1,9 @@
+[submodule "Genesis"]
+	path = Genesis
+	url = ./Genesis
+[submodule "rsl_rl"]
+	path = rsl_rl
+	url = ./rsl_rl
+[submodule "unitree_ros"]
+	path = unitree_ros
+	url = ./unitree_ros
