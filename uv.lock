@@ -596,7 +596,7 @@ requires-dist = [
 
 [[package]]
 name = "genesis-world"
-version = "0.3.10"
+version = "0.3.11"
 source = { editable = "Genesis" }
 dependencies = [
     { name = "coacd" },
@@ -678,7 +678,7 @@ requires-dist = [
     { name = "coacd" },
     { name = "fast-simplification", specifier = ">=0.1.12" },
     { name = "freetype-py" },
-    { name = "gs-madrona", marker = "(platform_machine == 'AMD64' and sys_platform == 'linux') or (platform_machine == 'x86_64' and sys_platform == 'linux')", specifier = "==0.0.5" },
+    { name = "gs-madrona", marker = "(platform_machine == 'AMD64' and sys_platform == 'linux') or (platform_machine == 'x86_64' and sys_platform == 'linux')", specifier = "==0.0.6.post1" },
     { name = "gstaichi", specifier = "==4.6.0" },
     { name = "huggingface-hub", extras = ["hf-xet"], marker = "extra == 'dev'" },
     { name = "ipython", marker = "extra == 'dev'" },
@@ -776,10 +776,10 @@ wheels = [
 
 [[package]]
 name = "gs-madrona"
-version = "0.0.5"
+version = "0.0.6.post1"
 source = { registry = "https://pypi.org/simple" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/cf/5f/9bfb283aec450a19c39b4b4997f4c0705860e5836dbbaa928b0b69ebfbf4/gs_madrona-0.0.5-cp312-abi3-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl", hash = "sha256:cffe96ec48335b02b96beeba3c6eaa35804b64f967d7650a27a4991bd12bae2f", size = 63885369, upload-time = "2025-09-03T15:28:00.169Z" },
+    { url = "https://files.pythonhosted.org/packages/78/cf/ce59e523060c75351630b01ef7296ea43f736f223b8eeb553a4ac6fe86a2/gs_madrona-0.0.6.post1-cp312-abi3-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl", hash = "sha256:f32bf046dcd08047dd3bd2bef82c1176eedcde60a2cd82ff88a0fde8c8042c71", size = 63885033, upload-time = "2025-12-22T20:49:21.136Z" },
 ]
 
 [[package]]

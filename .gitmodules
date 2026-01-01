@@ -1,9 +1,9 @@
 [submodule "Genesis"]
 	path = Genesis
-	url = ./Genesis
+	url = https://github.com/Genesis-Embodied-AI/Genesis.git
 [submodule "rsl_rl"]
 	path = rsl_rl
-	url = ./rsl_rl
+	url = https://github.com/leggedrobotics/rsl_rl
 [submodule "unitree_ros"]
 	path = unitree_ros
-	url = ./unitree_ros
+	url = https://github.com/unitreerobotics/unitree_ros.git

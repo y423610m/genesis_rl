@@ -12,10 +12,10 @@ dependencies = [
 
 [tool.uv.workspace]
 members = [
-    "Genesis",
     "rsl_rl",
+    "Genesis",
 ]
 
 [tool.uv.sources]
-genesis-world = { workspace = true }
 rsl-rl-lib = { workspace = true }
+genesis-world = { workspace = true }
