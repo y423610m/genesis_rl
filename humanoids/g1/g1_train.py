@@ -17,7 +17,7 @@ from rsl_rl.runners import OnPolicyRunner
 
 import genesis as gs
 
-from humanoids.g1.g1_env import G1Env
+from g1_env import G1Env
 
 
 def get_train_cfg(exp_name, max_iterations):

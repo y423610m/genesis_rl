@@ -8,6 +8,7 @@ dependencies = [
     "genesis-world",
     "ipython>=9.8.0",
     "rsl-rl-lib",
+    "tensorboard>=2.20.0",
 ]
 
 [tool.uv.workspace]
