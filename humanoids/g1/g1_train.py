@@ -57,8 +57,8 @@ def get_train_cfg(exp_name, max_iterations):
             "run_name": "",
         },
         "runner_class_name": "OnPolicyRunner",
-        "num_steps_per_env": 24,
-        "save_interval": 100,
+        "num_steps_per_env": 200,
+        "save_interval": 200,
         "empirical_normalization": None,
         "seed": 1,
     }
@@ -71,7 +71,6 @@ def get_cfgs():
         "num_actions": 23,
         # joint/link names
         "default_joint_angles": {  # [rad]
-            # "root_joint": 0.0,
             "left_hip_pitch_joint": 0.0,
             "right_hip_pitch_joint": 0.0,
             "waist_yaw_joint": 0.0,
@@ -97,7 +96,6 @@ def get_cfgs():
             "right_wrist_roll_joint": 0.0,
         },
         "joint_names": [
-            # "root_joint",
             "left_hip_pitch_joint",
             "right_hip_pitch_joint",
             "waist_yaw_joint",
