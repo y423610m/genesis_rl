@@ -155,8 +155,8 @@ def get_cfgs():
             "base_height": -50.0,
             "action_rate": -0.005,
             # "similar_to_default": -0.1,
-            "long_life": 0.1
         },
+        "long_life": 0.1
     }
     command_cfg = {
         "num_commands": 3,
