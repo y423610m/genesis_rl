@@ -296,8 +296,15 @@ class G1Env:
         # Penalize z axis base linear velocity
         return torch.square(self.base_lin_vel[:, 2])
 
-    def _reward_base_angle_xy(self):
-        return torch.sum(torch.square(self.base_euler[:, :2]), dim=1)
+    def _reward_limit_waist_yaw_joint(self):
+        waist_dof_index = 3
+        return torch.abs(self.dof_pos[waist_dof_index][0])
+
+    def _reward_base_angle_roll(self):
+        return torch.square(self.base_euler[:, 0] * (torch.abs(self.base_euler[:, 0]) > 10.0))
+
+    def _reward_base_angle_pitch(self):
+        return torch.square(self.base_euler[:, 1] * (torch.abs(self.base_euler[:, 1]) > 10.0))
 
     def _reward_action_rate(self):
         # Penalize changes in actions

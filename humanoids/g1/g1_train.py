@@ -124,8 +124,8 @@ def get_cfgs():
         "kp": 40.0,
         "kd": 0.7,
         # termination
-        "termination_if_roll_greater_than": 20,  # degree
-        "termination_if_pitch_greater_than": 20,
+        "termination_if_roll_greater_than": 30,  # degree
+        "termination_if_pitch_greater_than": 30,
         # base pose
         "base_init_pos": [0.0, 0.0, 0.8],
         "base_init_quat": [1.0, 0.0, 0.0, 0.0],
@@ -154,7 +154,9 @@ def get_cfgs():
             "lin_vel_z": -1.0,
             "base_height": -50.0,
             "action_rate": -0.005,
-            "base_angle_xy": -0.1,
+            "base_angle_roll": -0.01,
+            "base_angle_pitch": -0.01,
+            "limit_waist_yaw_joint": -0.01,
             "long_life": 1.0,
             # "upper_body": 1.0
             # "head_foot_pos": 1.0
