@@ -154,9 +154,9 @@ def get_cfgs():
             "lin_vel_z": -1.0,
             "base_height": -50.0,
             "action_rate": -0.005,
+            "long_life": 0.1
             # "similar_to_default": -0.1,
         },
-        "long_life": 0.1
     }
     command_cfg = {
         "num_commands": 3,

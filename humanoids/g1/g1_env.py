@@ -302,7 +302,7 @@ class G1Env:
 
     def _reward_long_life(self):
         # Penalize changes in actions
-        return torch.tensor(self.reward_cfg["long_life"])
+        return torch.tensor(self.reward_cfg["reward_scales"]["long_life"])
 
     # def _reward_similar_to_default(self):
         # # Penalize joint poses far away from default pose
