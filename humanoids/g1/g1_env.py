@@ -296,6 +296,9 @@ class G1Env:
         # Penalize z axis base linear velocity
         return torch.square(self.base_lin_vel[:, 2])
 
+    def _reward_base_angle_xy(self):
+        return torch.sum(torch.square(self.base_euler[:, :2]), dim=1)
+
     def _reward_action_rate(self):
         # Penalize changes in actions
         return torch.sum(torch.square(self.last_actions - self.actions), dim=1)
@@ -311,3 +314,11 @@ class G1Env:
     def _reward_base_height(self):
         # Penalize base height away from target
         return torch.square(self.base_pos[:, 2] - self.reward_cfg["base_height_target"])
+
+    # def _reward_upper_body(self):
+        # # Penalize base height away from target
+        # return torch.square(self.base_pos[:, 2] - self.dof_pos[""])
+
+    # def _reward_head_foot_pos(self):
+        # waist_yaw_joint_dof_index = 2
+        # return torch.square(self.base_pos[:, 2] - self.reward_cfg["base_height_target"])

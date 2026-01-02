@@ -57,8 +57,8 @@ def get_train_cfg(exp_name, max_iterations):
             "run_name": "",
         },
         "runner_class_name": "OnPolicyRunner",
-        "num_steps_per_env": 200,
-        "save_interval": 200,
+        "num_steps_per_env": 100,
+        "save_interval": 100,
         "empirical_normalization": None,
         "seed": 1,
     }
@@ -154,7 +154,10 @@ def get_cfgs():
             "lin_vel_z": -1.0,
             "base_height": -50.0,
             "action_rate": -0.005,
-            "long_life": 1.0
+            "base_angle_xy": -0.1,
+            "long_life": 1.0,
+            # "upper_body": 1.0
+            # "head_foot_pos": 1.0
             # "similar_to_default": -0.1,
         },
     }
