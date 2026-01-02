@@ -121,19 +121,19 @@ def get_cfgs():
             "right_wrist_roll_joint",
         ],
         # PD
-        "kp": 20.0,
-        "kd": 0.5,
+        "kp": 40.0,
+        "kd": 0.7,
         # termination
-        "termination_if_roll_greater_than": 30,  # degree
-        "termination_if_pitch_greater_than": 30,
+        "termination_if_roll_greater_than": 20,  # degree
+        "termination_if_pitch_greater_than": 20,
         # base pose
         "base_init_pos": [0.0, 0.0, 0.8],
         "base_init_quat": [1.0, 0.0, 0.0, 0.0],
         "episode_length_s": 20.0,
         "resampling_time_s": 4.0,
-        "action_scale": 0.25,
+        "action_scale": 0.5,
         "simulate_action_latency": True,
-        "clip_actions": 100.0,
+        "clip_actions": 200.0,
     }
     obs_cfg = {
         "num_obs": 9+23*3,
@@ -154,12 +154,13 @@ def get_cfgs():
             "lin_vel_z": -1.0,
             "base_height": -50.0,
             "action_rate": -0.005,
-            "similar_to_default": -0.1,
+            # "similar_to_default": -0.1,
+            "long_life": 0.1
         },
     }
     command_cfg = {
         "num_commands": 3,
-        "lin_vel_x_range": [0.5, 0.5],
+        "lin_vel_x_range": [0.3, 0.3],
         "lin_vel_y_range": [0, 0],
         "ang_vel_range": [0, 0],
     }

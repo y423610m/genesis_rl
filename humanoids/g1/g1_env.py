@@ -300,9 +300,13 @@ class G1Env:
         # Penalize changes in actions
         return torch.sum(torch.square(self.last_actions - self.actions), dim=1)
 
-    def _reward_similar_to_default(self):
-        # Penalize joint poses far away from default pose
-        return torch.sum(torch.abs(self.dof_pos - self.default_dof_pos), dim=1)
+    def _reward_long_life(self):
+        # Penalize changes in actions
+        return torch.tensor(self.reward_cfg["long_life"])
+
+    # def _reward_similar_to_default(self):
+        # # Penalize joint poses far away from default pose
+        # return torch.sum(torch.abs(self.dof_pos - self.default_dof_pos), dim=1)
 
     def _reward_base_height(self):
         # Penalize base height away from target
