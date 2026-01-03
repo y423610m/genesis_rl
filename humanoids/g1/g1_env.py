@@ -42,6 +42,7 @@ class G1Env:
             ),
             rigid_options=gs.options.RigidOptions(
                 enable_self_collision=True,
+                max_collision_pairs=100,
                 tolerance=1e-5,
             ),
             viewer_options=gs.options.ViewerOptions(
@@ -304,6 +305,9 @@ class G1Env:
 
     def _reward_base_angle_pitch(self):
         return torch.square(self.base_euler[:, 1] * (torch.abs(self.base_euler[:, 1]) > 10.0))
+
+    def _reward_move_straight(self):
+        return torch.abs(self.base_pos[:, 0])
 
     def _reward_action_rate(self):
         # Penalize changes in actions

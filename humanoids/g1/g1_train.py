@@ -159,6 +159,7 @@ def get_cfgs():
             "limit_waist_yaw_joint": -0.01,
             "long_life": 1.0,
             "mirror_arms": -1.0,
+            "move_straight": -1.0,
             # "upper_body": 1.0
             # "head_foot_pos": 1.0
             # "similar_to_default": -0.1,
@@ -166,7 +167,7 @@ def get_cfgs():
     }
     command_cfg = {
         "num_commands": 3,
-        "lin_vel_x_range": [0.3, 0.3],
+        "lin_vel_x_range": [0.5, 0.5],
         "lin_vel_y_range": [0, 0],
         "ang_vel_range": [0, 0],
     }
