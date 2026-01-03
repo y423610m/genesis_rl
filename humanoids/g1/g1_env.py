@@ -175,6 +175,11 @@ class G1Env:
         self.dof_pos = self.robot.get_dofs_position(self.motors_dof_idx)
         self.dof_vel = self.robot.get_dofs_velocity(self.motors_dof_idx)
 
+        # check termination and reset
+        self.reset_buf = self.episode_length_buf > self.max_episode_length
+        self.reset_buf |= torch.abs(self.base_euler[:, 1]) > self.env_cfg["termination_if_pitch_greater_than"]
+        self.reset_buf |= torch.abs(self.base_euler[:, 0]) > self.env_cfg["termination_if_roll_greater_than"]
+
         # compute reward
         self.rew_buf.zero_()
         for name, reward_func in self.reward_functions.items():
@@ -184,11 +189,6 @@ class G1Env:
 
         # resample commands
         self._resample_commands(self.episode_length_buf % int(self.env_cfg["resampling_time_s"] / self.dt) == 0)
-
-        # check termination and reset
-        self.reset_buf = self.episode_length_buf > self.max_episode_length
-        self.reset_buf |= torch.abs(self.base_euler[:, 1]) > self.env_cfg["termination_if_pitch_greater_than"]
-        self.reset_buf |= torch.abs(self.base_euler[:, 0]) > self.env_cfg["termination_if_roll_greater_than"]
 
         # Compute timeout
         self.extras["time_outs"] = (self.episode_length_buf > self.max_episode_length).to(dtype=gs.tc_float)
@@ -311,8 +311,7 @@ class G1Env:
         return torch.sum(torch.square(self.last_actions - self.actions), dim=1)
 
     def _reward_long_life(self):
-        # Penalize changes in actions
-        return torch.tensor(1.0)
+        return torch.where(self.reset_buf, torch.tensor(0.0), torch.tensor(1.0))
 
     # def _reward_similar_to_default(self):
         # # Penalize joint poses far away from default pose

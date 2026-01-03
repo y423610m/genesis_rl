@@ -1,51 +1,19 @@
 import genesis as gs
+from g1_train import G1Env, get_cfgs
 import IPython
 
+num_envs = 2
+
 gs.init(backend=gs.gpu, precision="32", logging_level="warning", performance_mode=True)
-dt = 0.02
 
-scene = gs.Scene(
-    sim_options=gs.options.SimOptions(
-        dt=dt,
-        substeps=2,
-    ),
-    rigid_options=gs.options.RigidOptions(
-        enable_self_collision=False,
-        tolerance=1e-5,
-        # For this locomotion policy, there are usually no more than 20 collision pairs. Setting a low value
-        # can save memory. Violating this condition will raise an exception.
-        max_collision_pairs=20,
-    ),
-    viewer_options=gs.options.ViewerOptions(
-        camera_pos=(2.0, 0.0, 2.5),
-        camera_lookat=(0.0, 0.0, 0.5),
-        camera_fov=40,
-        max_FPS=int(1.0 / dt),
-    ),
-    vis_options=gs.options.VisOptions(rendered_envs_idx=[0]),
-    show_viewer=True,
+env_cfg, obs_cfg, reward_cfg, command_cfg = get_cfgs()
+env = G1Env(
+    num_envs=num_envs, env_cfg=env_cfg, obs_cfg=obs_cfg, reward_cfg=reward_cfg, command_cfg=command_cfg,
+    show_viewer=False
 )
-
-# add plain
-scene.add_entity(
-    gs.morphs.URDF(
-        file="urdf/plane/plane.urdf",
-        fixed=True,
-    )
-)
-
-# add robot
-robot = scene.add_entity(
-    gs.morphs.URDF(
-        file="unitree_ros/robots/g1_description/g1_23dof.urdf",
-        pos=[0.0, 0.0, 0.8],
-        quat=[1.0, 0.0, 0.0, 0.0],
-    ),
-)
-
-scene.build(n_envs=1)
 
 IPython.embed()
+
 
 '''
 Links
