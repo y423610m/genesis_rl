@@ -158,7 +158,7 @@ def get_cfgs():
             "base_angle_pitch": -0.01,
             "limit_waist_yaw_joint": -0.01,
             "long_life": 1.0,
-            "mirror_arms": 1.0,
+            "mirror_arms": -1.0,
             # "upper_body": 1.0
             # "head_foot_pos": 1.0
             # "similar_to_default": -0.1,

@@ -1,4 +1,5 @@
 import math
+import IPython
 
 import torch
 
@@ -174,6 +175,7 @@ class G1Env:
         self.projected_gravity = transform_by_quat(self.global_gravity, inv_base_quat)
         self.dof_pos = self.robot.get_dofs_position(self.motors_dof_idx)
         self.dof_vel = self.robot.get_dofs_velocity(self.motors_dof_idx)
+        self.link_pos = self.robot.get_links_pos()
 
         # check termination and reset
         self.reset_buf = self.episode_length_buf > self.max_episode_length
@@ -312,6 +314,12 @@ class G1Env:
 
     def _reward_long_life(self):
         return torch.where(self.reset_buf, torch.tensor(0.0), torch.tensor(1.0))
+
+    def _reward_mirror_arms(self):
+        link_index_pelvis = 0
+        link_index_left_hand = 22
+        link_index_right_hand = 23
+        return torch.sum(torch.square((self.link_pos[:, link_index_left_hand]+self.link_pos[:, link_index_right_hand])/2-self.link_pos[:, link_index_pelvis]), dim=1)
 
     # def _reward_similar_to_default(self):
         # # Penalize joint poses far away from default pose
